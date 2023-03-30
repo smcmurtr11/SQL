@@ -1,0 +1,34 @@
+CREATE TABLE store_inventory (id INTEGER PRIMARY KEY, item TEXT, color TEXT, size TEXT, price INTEGER, quantity_stocked INTEGER, quantity_sold INTEGER);
+
+INSERT INTO store_inventory VALUES (1, "clip_collar", "blue", "small", 7.95, 35, 12);
+INSERT INTO store_inventory VALUES (2, "clip_collar", "green", "small", 7.95, 29, 9);
+INSERT INTO store_inventory VALUES (3, "clip_collar", "pink", "small", 7.95, 39, 15);
+INSERT INTO store_inventory VALUES (4, "clip_collar", "blue", "large", 10.95, 44, 21);
+INSERT INTO store_inventory VALUES (5, "clip_collar", "green", "large", 10.95, 42, 17);
+INSERT INTO store_inventory VALUES (6, "clip_collar", "pink", "large", 10.95, 55, 29);
+INSERT INTO store_inventory VALUES (7, "harness", "blue", "small", 18.95, 34, 16);
+INSERT INTO store_inventory VALUES (8, "harness", "green", "small", 18.95, 28, 12);
+INSERT INTO store_inventory VALUES (9, "harness", "pink", "small", 18.95, 41, 19);
+INSERT INTO store_inventory VALUES (10, "harness", "blue", "large", 23.95, 55, 28);
+INSERT INTO store_inventory VALUES (11, "harness", "green", "large", 23.95, 41, 17);
+INSERT INTO store_inventory VALUES (12, "harness", "pink", "large", 23.95, 62, 31);
+INSERT INTO store_inventory VALUES (13, "leash", "blue", "small", 16.95, 52, 27);
+INSERT INTO store_inventory VALUES (14, "leash", "green", "small", 16.95, 41, 21);
+INSERT INTO store_inventory VALUES (15, "leash", "pink", "small", 16.95, 56, 27);
+INSERT INTO store_inventory VALUES (16, "leash", "blue", "large", 19.95, 60, 36);
+INSERT INTO store_inventory VALUES (17, "leash", "green", "large", 19.95, 52, 23);
+INSERT INTO store_inventory VALUES (18, "leash", "pink", "large", 19.95, 62, 34);
+
+SELECT * FROM store_inventory;
+
+--What is the total sum of items sold?
+SELECT SUM(price * quantity_sold) AS total_dollars_paid
+    FROM store_inventory;
+
+--What is the most popular color sold?
+SELECT color, SUM(quantity_sold)
+    FROM store_inventory GROUP BY color;
+
+--What is the most popular size sold?
+SELECT size, SUM(quantity_sold)
+    FROM store_inventory GROUP BY size;
